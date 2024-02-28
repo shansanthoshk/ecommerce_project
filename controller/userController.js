@@ -19,7 +19,8 @@ const loginLoad=async(req,res)=>{
 
 const signupLoad= async(req,res)=>{
     try{
-        res.render('register')
+        let errorMessage='';
+        res.render('register' ,{ errorMessage })
     }catch(err){
         console.log(err);
         res.status(500).send('Internal Server Error')
@@ -104,7 +105,8 @@ const signupPost= async(req,res)=>{
         const check= await userCollection.findOne({email: req.body.email})
         if(check){
             const errorMessage='Email already exist';
-            res.redirect(`user/signup?error=${encodeURIComponent(errorMessage)}`)
+            console.log(errorMessage);
+            res.redirect(`/signup?error=${encodeURIComponent(errorMessage)}`)
 
         }else{
             user={
@@ -240,8 +242,22 @@ const getOtp = async (req, res) => {
 
   const home= async (req,res)=>{
     
-    const user1 = req.session.userId;
-    res.render('home')
+        res.render('home');
+
+    
+  }
+
+  const logout= async (req,res)=>{
+    req.session.destroy(function (err){
+        if(err){
+            console.log(err);
+            redirect('/login');
+        }else{
+            console.log("Logout successful");
+            res.status(200);
+            res.redirect('/login');
+        }
+    })
   }
 
 module.exports={
@@ -255,5 +271,6 @@ module.exports={
     otpPost,
     passOtp,
     loginPost,
-    home
+    home,
+    logout
 }

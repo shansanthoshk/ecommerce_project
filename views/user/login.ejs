@@ -20,14 +20,16 @@
 					<div class="heading mb-3">
 						<h4>Login into your account</h4>
 					</div>
-					<form action="user/login" method="post">
+					<form id="loginForm" action="/user/login" method="post" onsubmit="return validateForm()">
 						<div class="form-input">
 							<span><i class="fa fa-envelope"></i></span>
-							<input type="email" name="email" placeholder="Email Address" required>
+							<input type="email" id="email" name="email" placeholder="Email Address">
+							<div id="email-error" class="text-danger"></div>
 						</div>
 						<div class="form-input">
 							<span><i class="fa fa-lock"></i></span>
-							<input type="password" name="password" placeholder="Password" required>
+							<input type="password" id="password" name="password" placeholder="Password">
+							<div id="password-error" class="text-danger"></div>
 						</div>
 						<div class="row mb-3">
 							<div class="col-6 d-flex">
@@ -72,4 +74,61 @@
 		</div>
 	</div>
 </body>
+
+<script>
+	// // Function to validate the form
+	// function validateForm() {
+	// 	var email = document.getElementById('email').value;
+	// 	var password = document.getElementById('password').value;
+
+		
+	// 	document.getElementById('email-error').innerHTML = '';
+	// 	document.getElementById('password-error').innerHTML = '';
+
+	// 	// email validation
+	// 	if (!email) {
+	// 		document.getElementById('email-error').innerHTML = 'Email is required';
+	// 		return false;
+	// 	}
+
+	// 	// password validation
+	// 	if (!password) {
+	// 		document.getElementById('password-error').innerHTML = 'Password is required';
+	// 		return false;
+	// 	}
+
+		
+
+	// 	return true; 
+	// }
+
+
+	document.getElementById('loginForm').addEventListener('submit', validateForm);
+
+    function validateForm() {
+
+
+            var email = document.getElementById('email').value;
+            var password = document.getElementById('password').value;
+
+            // Basic email validation
+            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email) || /\s/.test(email)) {
+    alert('Please enter a valid email address without spaces.');
+    return false;
+}
+
+
+            // Password should be at least 6 characters long
+            if (password.length < 2 || /\s/.test(password)) {
+    alert('Password should be at least 6 characters long and should not contain spaces.');
+    return false;
+}
+            // Additional validation logic can be added as needed
+
+            return true;
+        }
+
+</script>
+
 </html>
