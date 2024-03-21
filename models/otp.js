@@ -1,11 +1,16 @@
 const mongoose = require('mongoose')
 
 const otpSchema=new mongoose.Schema({
+    
+    email:{
+        type:String,
+        
+    },
     otp:{
-        type:Number,
+        type:String,
         required:true
     },
-createdAT:{type:Date,default:Date.now,index:{expires:60}}
+createdAT:{type:Date,default:Date.now,index:{expires:30}}
 },{timestamps:true})
 
 

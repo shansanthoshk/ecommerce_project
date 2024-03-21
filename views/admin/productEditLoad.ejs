@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>DASHMIN - Bootstrap Admin Template</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <!-- <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" /> -->
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container-xxl position-relative bg-white d-flex p-0">
+        <!-- Spinner Start -->
+        <!-- <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div> -->
+        <!-- Spinner End -->
+
+
+        <!-- Sidebar Start -->
+        <div class="sidebar pe-4 pb-3">
+            <nav class="navbar bg-light navbar-light">
+                <a href="index.html" class="navbar-brand mx-4 mb-3">
+                    <h3 class="text-primary"><i class="fa fa-hashtag me-2"></i>Dashboard</h3>
+                </a>
+                <div class="d-flex align-items-center ms-4 mb-4">
+                   
+                </div>
+                
+                
+                <%- include('partial.ejs') %>
+
+            </nav>
+        </div>
+        <!-- Sidebar End -->
+
+
+        
+</nav>
+            <!-- Navbar End -->
+            <form action="/productsEditUpdate/<%=product._id%>" method="post" onsubmit="return validate()" >
+                <div class="form-group">
+                  <label for="productName"><i class="fas fa-user"></i>Product Name</label>
+                  <input type="text" name="name" value="<%=product.name%>" class="form-control" id="productName" placeholder="Enter product name">
+                  <div id="errorName" class="error-message"></div>
+                  <br>
+                </div>
+                <div class="form-group">
+                  <label for="productDescription"><i class="fas fa-file-alt"></i> Description of product</label>
+                <textarea class="form-control" name="description"  id="productDescription"><%- product.description %></textarea>
+                  <div id="errorDescription" class="error-message"></div>
+                </div>
+                <br>
+                <div class="form-group">
+                  <label for="productPrice"><i class="fas fa-dollar-sign"></i> Price of product</label>
+                  <input type="number" name="price" value="<%= product.price %>" class="form-control" id="productPrice" placeholder="Enter product price">
+                  <div id="errorPrice" class="error-message"></div>
+                </div>
+                <br>
+                <div class="form-group">
+                  <label for="productCategory"><i class="fas fa-tags"></i> Category of product</label>
+                  <select name="category"  class="form-control" id="productCategory">
+                    <% categories.forEach(category => { %>
+                      <option value="<%= category.category %>"><%= category.category %></option>
+                    <% }); %>
+                      
+                  </select>
+              </div>
+              <br>
+              
+                <div class="form-group">
+                  <label for="productImage"><i class="fas fa-image"></i> Image of product</label>
+                  
+                  <input type="file" name="image" class="form-control-file" id="productImage" onchange="previewImage(this)" multiple>
+                  <div>
+                    <label>Current Images:</label>
+                    <% product.image.forEach((img) => { %>
+                      <img src="/productImages/<%= img %>" width="100px" height="100px" alt="<%= img %>">
+                    <% }) %>
+                  </div>
+                </div>
+                <br>
+                
+                <div class="form-group">
+                  <label for="productStock"><i class="fas fa-cubes"></i> Stock of product</label>
+                  <input type="number" name="stock" value="<%= product.stock %>" class="form-control" id="productStock" placeholder="Enter product stock">
+                  <div id="errorStock" class="error-message"></div>
+                </div>
+                <br>
+                <button type="submit" class="btn btn-primary"><i class="fas fa-check"></i> Submit</button>
+              </form>
+
+           
+        </div>
+        
+
+
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+    </div>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script src="js/adminMain.js"></script>
+</body>
+
+<script>
+
+  function validate(){
+    let isValid = true;
+
+
+    const name = document.getElementById('productName').value;
+    const errorName = document.getElementById('errorName');
+    errorName.innerHTML = '';
+    if (name.trim() === '') {
+        errorName.innerHTML = 'Please enter a product Name.';
+        errorName.style.color = 'red'; 
+        isValid = false;
+    } else if (!isNaN(name)) { 
+        errorName.innerHTML = 'Name should not contain numbers.';
+        errorName.style.color = 'red'; 
+        isValid = false;
+    } else {
+        errorName.style.color = ''; 
+    }
+
+    
+    const description = document.getElementById('productDescription').value;
+    const errorDescription = document.getElementById('errorDescription');
+    errorDescription.innerHTML = '';
+    if (description.trim() === '') {
+        errorDescription.innerHTML = 'Please enter a product description.';
+        errorDescription.style.color = 'red';
+        isValid = false;
+    }
+    
+    const price = parseFloat(document.getElementById('productPrice').value);
+    const errorPrice = document.getElementById('errorPrice');
+    errorPrice.innerHTML = '';
+    if (isNaN(price) || price <= 0) {
+        errorPrice.innerHTML = 'Price must be a number greater than zero.';
+        errorPrice.style.color = 'red';
+        isValid = false;
+    }
+    const image = document.getElementById('productImages').value;
+    const errorImages = document.getElementById('errorImages');
+    errorImages.innerHTML = '';
+    if (!image) {
+        errorImages.innerHTML = 'Please select an image.';
+        errorImages.style.color = 'red';
+        isValid = false;
+    }
+
+
+    const stock = parseFloat(document.getElementById('productStock').value);
+    const errorStock = document.getElementById('errorStock');
+    errorStock.innerHTML = '';
+    if (isNaN(stock) || stock <= 0) {
+        errorStock.innerHTML = 'Stock must be a number greater than zero.';
+        errorStock.style.color = 'red';
+        isValid = false;
+    }
+    
+    
+    return isValid;
+
+
+  }
+</script>
+
+</html>

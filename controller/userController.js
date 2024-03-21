@@ -1,15 +1,18 @@
 const userCollection=require('../models/userSchema')
+const productCollection = require('../models/productSchema');
 const generateOtp=require('otp-generator')
 const otpSchema=require('../models/otp')
 const nodemailer = require("nodemailer");
 const crypto = require('crypto');
+const { log } = require('console');
+const otp = require('../models/otp');
 const dotenv = require('dotenv').config();
 
 
 const loginLoad=async(req,res)=>{
 
     try{
-        res.render('login')
+        res.render('login',{error:""})
     
 }catch(error){
     console.log(error)
@@ -39,9 +42,8 @@ const forgetLoad= async(req,res)=>{
 
 //var otp;
 let user = false;
-let userData;
 let transporter;
-let email;
+
 
 
 const login = async (req,res)=>{
@@ -88,13 +90,14 @@ function sendOtp(otp,email){
 
 
 const signupPost= async(req,res)=>{
+    console.log('CONTROLLES D');
     // try{
 
-    //     const data={
-    //         name:req.body.name,
-    //         email:req.body.email,
-    //         password:req.body.password
-    //     }
+        // const data={
+        //     name:req.body.name,
+        //     email:req.body.email,
+        //     password:req.body.password
+        // }
 
     //     await userCollection.insertMany([data])
     //     res.render('login')
@@ -114,19 +117,32 @@ const signupPost= async(req,res)=>{
                 email:req.body.email,
                 password:req.body.password,
             }
-            console.log("user",user);
+
+            console.log(user);
             
             
             const email=user.email;
-            
+            req.session.userData = user;
             req.session.email=email;
             console.log("emaill",email);
             
 
-            otp = generateOtp.generate(6, { digits: true, alphabets: false, specialChars: false });
-
+            const otp = generateOtp.generate(6, { digits: true, alphabets: false, specialChars: false });
+console.log('generated otp',otp);
             sendOtp(otp, user.email)
-            res.render("otp")
+            
+
+
+
+            const newOTP = new otpSchema({
+                email: email,
+                otp: otp
+            });
+    
+            // Save the new OTP data to the database
+            const savedOTP = await newOTP.save();
+
+            res.render("otp",{error:""})
     
         }
     }catch(error){
@@ -139,7 +155,7 @@ const signupPost= async(req,res)=>{
 const getOtp = async (req, res) => {
     try {
   
-      res.render("otp");
+      res.render("otp",{error:""});
     }
     catch (error) {
       console.error(error)
@@ -154,14 +170,15 @@ const getOtp = async (req, res) => {
   
       const email = req.session.email;
       console.log("22222", email);
-      const otp = await generateOtp.generate(6, { digits: true, alphabets: false, specialChars: false });
+      const newOtp = await generateOtp.generate(6, { digits: true, alphabets: false, specialChars: false });
+      console.log("newOtp",newOtp);
   
   
-      sendOtp(otp, email);
+      sendOtp(newOtp, email);
   
   
   
-      res.redirect("/user/otp")
+      res.redirect("/otp")
     }
     catch (error) {
       console.error(error)
@@ -184,18 +201,43 @@ const getOtp = async (req, res) => {
 
   const otpPost= async (req,res)=>{
     try{
-        console.log("hello");
+        console.log("otp post");
         
         const enteredOtp= req.body.otp;
-        console.log(enteredOtp);
-        console.log(otp);
+        const email = req.session.email;
+        console.log("user entered otp"+enteredOtp);
+        
+        const otpData = await otpSchema.findOne({ email: email }).exec();
 
-        if(enteredOtp===otp){
+        if (!otpData) {
+            console.log("No OTP found for the provided email");
+            // new otp haS SEND 
+            const otp = generateOtp.generate(6, { digits: true, alphabets: false, specialChars: false });
+            console.log('generated otp',otp);
+                        sendOtp(otp, user.email)
+                        
+            
+            
+            
+                        const newOTP = new otpSchema({
+                            email: email,
+                            otp: otp
+                        });
+                
+                        // Save the new OTP data to the database
+                        const savedOTP = await newOTP.save();
+            // __________________
+            res.render('otp',{error:"New otp has send!"}); // Fail
+            return;
+        }
+
+        if(enteredOtp===otpData.otp){
             console.log("Done!!");
-            await userCollection.insertMany([user]);
+            await userCollection.insertMany(req.session.userData);
+
             res.redirect('/login');
         }else{
-            res.redirect('user/otp'); //Fail
+            res.render('otp',{error:"Wrong OTP!"}); //Fail
         }
 
 
@@ -209,29 +251,34 @@ const getOtp = async (req, res) => {
 
   const loginPost= async (req,res)=>{
     try{
-        const check= await userCollection.findOne({email:req.body.email,password:req.body.password});
-
+        const check= await userCollection.findOne({email:req.body.email});
+        console.log(`data of usr` + check);
         if(check){
             if(check && check.password===req.body.password){
                 req.session.userId = check._id.toString();
                 console.log("Successfull");
                 console.log("User ID:",req.session.userId);
-                const isUserBlocked1 = await userCollection.findOne({ _id: req.session.userId }, { blocked: 1 })
-                const isUserBlocked = isUserBlocked1.blocked;
+                // ___________________________________________
+                // const isUserBlocked1 = await userCollection.findOne({ _id: req.session.userId }, { blocked: 1 })
+                // const isUserBlocked = isUserBlocked1.blocked;
 
-                if (isUserBlocked == false) {
-                    console.log("Login successful. User ID:", req.session.userId);
+                // if (isUserBlocked == false) {
+                //     console.log("Login successful. User ID:", req.session.userId);
+                //     res.redirect("/");
+                //   }
+                //   else {
+                //     res.render('user/login')
+                //   }
+                // ___________________________________________
+
                     res.redirect("/");
-                  }
-                  else {
-                    res.render('user/login')
-                  }
+
             }else {
                 // Prepare  error messages for email and password
-                res.render("user/login", { error: "Invalid Password" })
+                res.render("login", { error: "Invalid Password" })
               }
         }else {
-            res.render("user/login", { error: "Email not found" })
+            res.render("login", { error: "Email not found" })
           }
     }catch(err){
         console.log("ERROR",err);
@@ -240,12 +287,31 @@ const getOtp = async (req, res) => {
     }
   };
 
+ 
   const home= async (req,res)=>{
     
-        res.render('home');
+        // res.render('home');
+        try{
+            
 
-    
-  }
+            const products= await productCollection
+                .find()
+                
+
+                console.log(products)
+
+            const users= await userCollection.findOne({email:req.session.user})
+
+            res.render('home',{products,users})
+
+        }catch(err){
+            console.error(err)
+            res.status(500).send('Internal server error')
+        }
+    };
+
+
+
 
   const logout= async (req,res)=>{
     req.session.destroy(function (err){
@@ -260,6 +326,20 @@ const getOtp = async (req, res) => {
     })
   }
 
+
+  const productdetails = async (req,res)=>{
+        try{
+            const id=req.params.id;
+            console.log("ID",id);
+            const products= await productCollection.findById(id);
+            res.render('productDetails',{products})
+
+        }catch(err){
+            console.log(err);
+            res.status(500).send('Internal Server Error');
+        }
+        
+  }
 module.exports={
     loginLoad,
     signupLoad,
@@ -272,5 +352,6 @@ module.exports={
     passOtp,
     loginPost,
     home,
-    logout
+    logout,
+    productdetails
 }

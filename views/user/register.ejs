@@ -97,51 +97,53 @@
 
 
 <script>
-	// Function to validate the registration form
+	
 	function validateForm() {
 		var name = document.getElementById('name').value;
 		var email = document.getElementById('email').value;
 		var password = document.getElementById('password').value;
 		var conpassword = document.getElementById('conpassword').value;
+		var isValid=true;
 
-		// Reset previous error messages
 		document.getElementById('name-error').innerHTML = '';
 		document.getElementById('email-error').innerHTML = '';
 		document.getElementById('password-error').innerHTML = '';
 		document.getElementById('conpassword-error').innerHTML = '';
 
-		// Validate name
+
 		if (!name) {
 			document.getElementById('name-error').innerHTML = 'Full Name is required';
-			return false;
+			isValid=false;
 		}
 
-		// Validate email
+		
 		if (!email) {
 			document.getElementById('email-error').innerHTML = 'Email is required';
-			return false;
+			isValid=false;
 		} else {
-			// Validate email format using a simple regular expression
-			var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-			if (!emailRegex.test(email)) {
-				document.getElementById('email-error').innerHTML = 'Invalid email format';
-				return false;
-			}
-		}
+            
+            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                document.getElementById('email-error-msg').innerHTML = 'Invalid email format';
+                isValid = false;
+            }
+        }
 
-		// Validate password
+		
 		if (!password) {
-			document.getElementById('password-error').innerHTML = 'Password is required';
-			return false;
-		}
+    document.getElementById('password-error').innerHTML = 'Password is required';
+    isValid=false;
+} else {
+    if (password.indexOf(' ') !== -1) {
+        document.getElementById('password-error').innerHTML = 'Password cannot contain spaces';
+        isValid = false;
+    } else if (!/^[a-zA-Z0-9!@#$%^&*()_+=\-[\]{};:'"|<,>.?\/]+$/.test(password)) {
+        document.getElementById('password-error').innerHTML = 'Password cannot contain spaces or special characters';
+        isValid = false;
+    }
+}
 
-		// Validate confirm password
-		if (!conpassword || conpassword !== password) {
-			document.getElementById('conpassword-error').innerHTML = 'Passwords do not match';
-			return false;
-		}
-
-		return true; // Form is valid
+		return isValid; 
 	}
 </script>
 

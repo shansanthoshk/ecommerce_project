@@ -26,6 +26,7 @@
                     <div class="mt-4"> <button class="btn btn-danger px-4 validate" type="submit">Submit</button> </div>
                     <div id="countdown">00:59</div>
                     <div id="hiddenButton" style="display: none;"> <!-- Initially hidden -->
+                        <a style="color: rgb(236, 119, 119); font-size:11px;"><%= error %></a>
                         <a id="showButton" href="/user/newotp">Resend OTP</a>
                         <!-- <button id="showButton">Show Me!</button> -->
                     </div>
@@ -37,7 +38,7 @@
 
 
     <script>
-        let seconds = 60;
+        let seconds = 30;
 
         function countdown() {
             const countdownDisplay = document.getElementById('countdown');
@@ -59,11 +60,11 @@
         // Function to show the hidden button after 1 minute
         function showButtonAfterOneMinute() {
             const hiddenButton = document.getElementById('hiddenButton');
-            hiddenButton.style.display = 'block'; // Show the hidden button
+            hiddenButton.style.display = 'block'; 
         }
 
-        // Set a timeout to call the function after 1 minute (60,000 milliseconds)
-        setTimeout(showButtonAfterOneMinute, 60000);
+        // Set a timeout to call the function 
+        setTimeout(showButtonAfterOneMinute, 3000);
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"

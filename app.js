@@ -1,7 +1,6 @@
 const express= require('express')
 const app=express();
 const mongoose=require('mongoose')
-// const session=require('express-session')
 const crypto=require('crypto')
 require('dotenv').config();
 const path = require('path')
@@ -46,13 +45,6 @@ const sessionSecret = crypto.randomUUID();
 //       secure: false
 //     }
 //   }))
-
-
-
- 
-
-  
-
 
 
 app.listen(7000,()=>{

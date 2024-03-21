@@ -65,6 +65,7 @@
 }
 
 
+
 /*** Layout ***/
 .sidebar {
     position: fixed;
@@ -130,6 +131,8 @@
     border-radius: 0 30px 30px 0;
     outline: none;
 }
+
+
 
 .sidebar .navbar .navbar-nav .nav-link:hover,
 .sidebar .navbar .navbar-nav .nav-link.active {

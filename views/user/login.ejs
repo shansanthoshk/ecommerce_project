@@ -20,7 +20,7 @@
 					<div class="heading mb-3">
 						<h4>Login into your account</h4>
 					</div>
-					<form id="loginForm" action="/user/login" method="post" onsubmit="return validateForm()">
+					<form id="loginForm" action="/login" method="post" onsubmit="return validateForm()">
 						<div class="form-input">
 							<span><i class="fa fa-envelope"></i></span>
 							<input type="email" id="email" name="email" placeholder="Email Address">
@@ -31,6 +31,7 @@
 							<input type="password" id="password" name="password" placeholder="Password">
 							<div id="password-error" class="text-danger"></div>
 						</div>
+						
 						<div class="row mb-3">
 							<div class="col-6 d-flex">
 								<div class="custom-control custom-checkbox">
@@ -66,6 +67,7 @@
 						<div class="text-white">Don't have an account?
 							<a href="/signup" class="register-link">Register here</a>
 						</div>
+
 					</form>
 				</div>
 			</div>
@@ -106,28 +108,29 @@
 	document.getElementById('loginForm').addEventListener('submit', validateForm);
 
     function validateForm() {
+    var email = document.getElementById('email').value;
+    var password = document.getElementById('password').value;
+    var isValid = true;
 
+    // Basic email validation
+    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email) || /\s/.test(email)) {
+        document.getElementById('email-error').innerHTML = 'Please enter a valid email.';
+        isValid = false;
+    } else {
+        document.getElementById('email-error').innerHTML = ''; // Clear previous error message
+    }
 
-            var email = document.getElementById('email').value;
-            var password = document.getElementById('password').value;
+    // Password should be at least 6 characters long
+    if (password.length < 6 || /\s/.test(password)) {
+        document.getElementById('password-error').innerHTML = 'Password should be at least 6 characters long and should not contain spaces.';
+        isValid = false;
+    } else {
+        document.getElementById('password-error').innerHTML = ''; // Clear previous error message
+    }
 
-            // Basic email validation
-            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(email) || /\s/.test(email)) {
-    alert('Please enter a valid email address without spaces.');
-    return false;
+    return isValid;
 }
-
-
-            // Password should be at least 6 characters long
-            if (password.length < 2 || /\s/.test(password)) {
-    alert('Password should be at least 6 characters long and should not contain spaces.');
-    return false;
-}
-            // Additional validation logic can be added as needed
-
-            return true;
-        }
 
 </script>
 

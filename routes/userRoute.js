@@ -25,7 +25,7 @@ user_Route.set("views", path.join(__dirname, "../views/user"));
 
 
 
-user_Route.get('/',isBlock,userController.home)
+user_Route.get('/',userAuth.isLogin,isBlock,userController.home)
 
 user_Route.get('/logout', userController.logout)
 
@@ -37,13 +37,18 @@ user_Route.get('/forget', userController.forgetLoad)
 
 user_Route.post('/signup', userController.signupPost)
 
-user_Route.post('/newotp', userController.newOtp)
 
 user_Route.get('/otp', userController.getOtp);
 
 user_Route.post('/user/otp', userController.otpPost);
 
-user_Route.post('/user/login', userController.loginPost);
+user_Route.get('/user/newotp', userController.newOtp);
+
+
+
+user_Route.post('/login', userController.loginPost);
+
+user_Route.get('/productdetails/:id',userController.productdetails)
 
 
 
