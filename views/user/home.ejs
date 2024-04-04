@@ -1,149 +1,192 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<title>Home 02</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-<!--===============================================================================================-->	
-	<link rel="icon" type="image/png" href="images/icons/favicon.png"/>
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="images/icons/favicon.png" />
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="fonts/linearicons-v1.0.0/icon-font.min.css">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
-<!--===============================================================================================-->	
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
-<!--===============================================================================================-->	
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor/slick/slick.css">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor/MagnificPopup/magnific-popup.css">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor/perfect-scrollbar/perfect-scrollbar.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="userStyle/main.css"> 
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="userStyle/main.css">
 	<!-- userStyle/util.css -->
 	<link rel="stylesheet" type="text/css" href="userStyle/util.css">
 	<!-- userStyle/main.css -->
 
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+WyTvCF1cOuGOl1KPI5x2QFA8a5eQqDYYA5" crossorigin="anonymous">
-	
-<!--===============================================================================================-->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha384-o5VW9o+axTlHzU3+W+8U6Vb1bqO+ph7OPaIypNO6U5B9VqUDtSlgblRk6N2O5e0H" crossorigin="anonymous">
 
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-icons/3.0.1/iconfont/material-icons.min.css" integrity="sha384-3z3D2a6dPauflbeF2T6Sk8uTzTfWkB0EMs6hPvmUOe9tyd2o4p4b0I6wtbPnN17V" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+		integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+WyTvCF1cOuGOl1KPI5x2QFA8a5eQqDYYA5" crossorigin="anonymous">
 
-<style>
-	
-	.product-card {
-		border: 1px solid #ddd;
-		margin: 10px;
-		padding: 15px;
-		max-width: 300px;
-	}
+	<!--===============================================================================================-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+		integrity="sha384-o5VW9o+axTlHzU3+W+8U6Vb1bqO+ph7OPaIypNO6U5B9VqUDtSlgblRk6N2O5e0H" crossorigin="anonymous">
 
-	.product-image img {
-		max-width: 100%;
-		height: auto;
-	}
 
-	.product-name {
-		font-size: 16px;
-		margin: 10px 0;
-	}
+	<link rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/material-design-icons/3.0.1/iconfont/material-icons.min.css"
+		integrity="sha384-3z3D2a6dPauflbeF2T6Sk8uTzTfWkB0EMs6hPvmUOe9tyd2o4p4b0I6wtbPnN17V" crossorigin="anonymous">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/html-minifier/4.0.0/htmlminifier.min.js"
+		integrity="sha512-4iIsNBIgG/kZCukIg4oZDZe1ZBRUFfklAGUVpbck6xqjd+tBeX2WqtZChk/HrERHqEBky20H+UqUabF9whH+cw=="
+		crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	<meta name='viewport' content='width=device-width, initial-scale=1'>
+	<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+	<style>
+		.product-card {
+			border: 1px solid #ddd;
+			margin: 10px;
+			padding: 15px;
+			max-width: 300px;
+		}
 
-	.product-price {
-		font-size: 18px;
-		color: #333;
-		font-weight: bold;
-	}
+		.product-image img {
+			max-width: 100%;
+			height: auto;
+		}
 
-	.wishlist-btn {
-		margin-top: 10px;
-	}
+		.product-name {
+			font-size: 16px;
+			margin: 10px 0;
+		}
 
-	.add-to-wishlist img {
-		max-width: 24px;
-		height: auto;
-	}
+		.product-price {
+			font-size: 18px;
+			color: #333;
+			font-weight: bold;
+		}
 
-	.quick-view-btn {
-		display: inline-block;
-		padding: 10px;
-		background-color: #3498db;
-		color: #fff;
-		text-decoration: none;
-		border-radius: 5px;
-		transition: background-color 0.3s ease;
-	}
+		.wishlist-btn {
+			margin-top: 10px;
+		}
 
-	.quick-view-btn:hover {
-		background-color: #2980b9;
-	}
+		.add-to-wishlist img {
+			max-width: 24px;
+			height: auto;
+		}
 
-	.wrap-slick2 {
-    display: flex;
-}
+		.quick-view-btn {
+			display: inline-block;
+			padding: 10px;
+			background-color: #3498db;
+			color: #fff;
+			text-decoration: none;
+			border-radius: 5px;
+			transition: background-color 0.3s ease;
+		}
 
-.item-slick2 {
-    flex: 0 0 100%; /* Set the width of each item to 100% */
-}
+		.quick-view-btn:hover {
+			background-color: #2980b9;
+		}
 
-/* Add any custom styles for the footer here */
-/* Add any custom styles for the footer here */
-.footer {
-      background-color: #333;
-      color: white;
-      padding: 50px 0;
-    }
+		.wrap-slick2 {
+			display: flex;
+		}
 
-    .footer h4 {
-      color: #fff;
-    }
+		.item-slick2 {
+			flex: 0 0 100%;
+			/* Set the width of each item to 100% */
+		}
 
-    .footer ul {
-      list-style: none;
-      padding: 0;
-    }
+		/* Add any custom styles for the footer here */
+		/* Add any custom styles for the footer here */
+		.footer {
+			background-color: #333;
+			color: white;
+			padding: 50px 0;
+		}
 
-    .footer a {
-      color: #fff;
-      text-decoration: none;
-    }
+		.footer h4 {
+			color: #fff;
+		}
 
-    .footer a:hover {
-      color: #f8f9fa;
-    }
+		.footer ul {
+			list-style: none;
+			padding: 0;
+		}
 
-    .footer .social-icons a {
-      margin-right: 10px;
-    }
+		.footer a {
+			color: #fff;
+			text-decoration: none;
+		}
 
-</style>
+		.footer a:hover {
+			color: #f8f9fa;
+		}
+
+		.footer .social-icons a {
+			margin-right: 10px;
+		}
+
+		.icon {
+			cursor: pointer;
+			transition: width .3s;
+		}
+
+		.icon:hover {
+			width: 27px;
+		}
+
+		.profile_icon_div {
+			width: 40px;
+			height: 40px;
+			border-radius: 50%;
+			/* Makes the div circular */
+			overflow: hidden;
+			/* Crops the image to fit the circular shape */
+			display: flex;
+			/* Centers the image */
+			justify-content: center;
+			/* Centers the image horizontally */
+			align-items: center;
+			/* Centers the image vertically */
+			border: 1px solid rgb(96, 96, 96);
+			left: 0;
+		}
+
+		.profile_icon_div img {
+			width: 100%;
+			/* Adjusts the image width to fit the container */
+			height: auto;
+		}
+	</style>
 
 
 </head>
+
 <body class="animsition">
-	
+
 	<!-- Header -->
 	<header class="header-v2">
 		<!-- Header desktop -->
 		<div class="container-menu-desktop trans-03">
 			<div class="wrap-menu-desktop">
 				<nav class="limiter-menu-desktop p-l-45">
-					
-					<!-- Logo desktop -->		
+
+					<!-- Logo desktop -->
 					<a href="#" class="logo">
 						<img src="images/icons/logo-01.png" alt="IMG-LOGO">
 					</a>
@@ -179,38 +222,50 @@
 							<li>
 								<a href="contact.html">Contact</a>
 							</li>
+
+
+
+
 						</ul>
-					</div>	
+					</div>
 
 					<!-- Icon header -->
 					<div class="wrap-icon-header flex-w flex-r-m h-full">
-						<div class="flex-c-m h-full p-r-24">
-							<div class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 js-show-modal-search">
-								<i class="fa-search"></i>
+						<div class="profile_bar" style=" user-select: none;  width:35%; height: 70%; display: flex; align-items: center;">
+							<div class="icons"
+								style="align-items: center;  flex:0 0 50%;  height: 60%; display: flex; justify-content: space-around;">
+								<div id="cart_icon_div ">
+									<a href="/cartPage">
+									<img class="icon" src="/images/icons/cart-icon.png.png"
+										width="25px">
+									</a>
+									</div>
+								<div id="wishlist_icon ">
+									<a href="/wishList">
+									<img class="icon" src="/images/icons/love.png" width="25px">
+									</a>
+								</div>
+							</div>
 
+							<div class="icons"
+								style="align-items: center;   flex:0 0 50%;  height: 70%; display: flex; justify-content: space-around;">
+								<div class="profile_icon_div"><img src="/images/icons/working.png" alt=""></div>
 							</div>
-						</div>
-							
-						<div class="flex-c-m h-full p-l-18 p-r-25 bor5">
-							<div class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 icon-header-noti js-show-cart" data-notify="2">
-								<i class="zmdi zmdi-shopping-cart"></i>
-							</div>
-						</div>
-							
-						<div class="flex-c-m h-full p-lr-19">
-							<div class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 js-show-sidebar">
-								<!-- <i class="zmdi zmdi-menu"></i> -->
-								<a href="/logout">logout</a>
-							</div>
+
 						</div>
 					</div>
-				</nav>
-			</div>	
+
+
+
+					<!-- <a href="/logout">logout</a> -->
+			</div>
+			</nav>
+		</div>
 		</div>
 
 		<!-- Header Mobile -->
 		<div class="wrap-header-mobile">
-			<!-- Logo moblie -->		
+			<!-- Logo moblie -->
 			<div class="logo-mobile">
 				<a href="index.html"><img src="images/icons/logo-01.png" alt="IMG-LOGO"></a>
 			</div>
@@ -224,7 +279,8 @@
 				</div>
 
 				<div class="flex-c-m h-full p-lr-10 bor5">
-					<div class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 icon-header-noti js-show-cart" data-notify="2">
+					<div class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 icon-header-noti js-show-cart"
+						data-notify="2">
 						<i class="zmdi zmdi-shopping-cart"></i>
 					</div>
 				</div>
@@ -351,56 +407,56 @@
 					<div class="flex-w flex-sb p-t-36 gallery-lb">
 						<!-- item gallery sidebar -->
 						<div class="wrap-item-gallery m-b-10">
-							<a class="item-gallery bg-img1" href="images/gallery-01.jpg" data-lightbox="gallery" 
-							style="background-image: url('images/gallery-01.jpg');"></a>
+							<a class="item-gallery bg-img1" href="images/gallery-01.jpg" data-lightbox="gallery"
+								style="background-image: url('images/gallery-01.jpg');"></a>
 						</div>
 
 						<!-- item gallery sidebar -->
 						<div class="wrap-item-gallery m-b-10">
-							<a class="item-gallery bg-img1" href="images/gallery-02.jpg" data-lightbox="gallery" 
-							style="background-image: url('images/gallery-02.jpg');"></a>
+							<a class="item-gallery bg-img1" href="images/gallery-02.jpg" data-lightbox="gallery"
+								style="background-image: url('images/gallery-02.jpg');"></a>
 						</div>
 
 						<!-- item gallery sidebar -->
 						<div class="wrap-item-gallery m-b-10">
-							<a class="item-gallery bg-img1" href="images/gallery-03.jpg" data-lightbox="gallery" 
-							style="background-image: url('images/gallery-03.jpg');"></a>
+							<a class="item-gallery bg-img1" href="images/gallery-03.jpg" data-lightbox="gallery"
+								style="background-image: url('images/gallery-03.jpg');"></a>
 						</div>
 
 						<!-- item gallery sidebar -->
 						<div class="wrap-item-gallery m-b-10">
-							<a class="item-gallery bg-img1" href="images/gallery-04.jpg" data-lightbox="gallery" 
-							style="background-image: url('images/gallery-04.jpg');"></a>
+							<a class="item-gallery bg-img1" href="images/gallery-04.jpg" data-lightbox="gallery"
+								style="background-image: url('images/gallery-04.jpg');"></a>
 						</div>
 
 						<!-- item gallery sidebar -->
 						<div class="wrap-item-gallery m-b-10">
-							<a class="item-gallery bg-img1" href="images/gallery-05.jpg" data-lightbox="gallery" 
-							style="background-image: url('images/gallery-05.jpg');"></a>
+							<a class="item-gallery bg-img1" href="images/gallery-05.jpg" data-lightbox="gallery"
+								style="background-image: url('images/gallery-05.jpg');"></a>
 						</div>
 
 						<!-- item gallery sidebar -->
 						<div class="wrap-item-gallery m-b-10">
-							<a class="item-gallery bg-img1" href="images/gallery-06.jpg" data-lightbox="gallery" 
-							style="background-image: url('images/gallery-06.jpg');"></a>
+							<a class="item-gallery bg-img1" href="images/gallery-06.jpg" data-lightbox="gallery"
+								style="background-image: url('images/gallery-06.jpg');"></a>
 						</div>
 
 						<!-- item gallery sidebar -->
 						<div class="wrap-item-gallery m-b-10">
-							<a class="item-gallery bg-img1" href="images/gallery-07.jpg" data-lightbox="gallery" 
-							style="background-image: url('images/gallery-07.jpg');"></a>
+							<a class="item-gallery bg-img1" href="images/gallery-07.jpg" data-lightbox="gallery"
+								style="background-image: url('images/gallery-07.jpg');"></a>
 						</div>
 
 						<!-- item gallery sidebar -->
 						<div class="wrap-item-gallery m-b-10">
-							<a class="item-gallery bg-img1" href="images/gallery-08.jpg" data-lightbox="gallery" 
-							style="background-image: url('images/gallery-08.jpg');"></a>
+							<a class="item-gallery bg-img1" href="images/gallery-08.jpg" data-lightbox="gallery"
+								style="background-image: url('images/gallery-08.jpg');"></a>
 						</div>
 
 						<!-- item gallery sidebar -->
 						<div class="wrap-item-gallery m-b-10">
-							<a class="item-gallery bg-img1" href="images/gallery-09.jpg" data-lightbox="gallery" 
-							style="background-image: url('images/gallery-09.jpg');"></a>
+							<a class="item-gallery bg-img1" href="images/gallery-09.jpg" data-lightbox="gallery"
+								style="background-image: url('images/gallery-09.jpg');"></a>
 						</div>
 					</div>
 				</div>
@@ -411,7 +467,9 @@
 					</span>
 
 					<p class="stext-108 cl6 p-t-27">
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur maximus vulputate hendrerit. Praesent faucibus erat vitae rutrum gravida. Vestibulum tempus mi enim, in molestie sem fermentum quis. 
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur maximus vulputate hendrerit.
+						Praesent faucibus erat vitae rutrum gravida. Vestibulum tempus mi enim, in molestie sem
+						fermentum quis.
 					</p>
 				</div>
 			</div>
@@ -433,7 +491,7 @@
 					<i class="zmdi zmdi-close"></i>
 				</div>
 			</div>
-			
+
 			<div class="header-cart-content flex-w js-pscroll">
 				<ul class="header-cart-wrapitem w-full">
 					<li class="header-cart-item flex-w flex-t m-b-12">
@@ -484,18 +542,20 @@
 						</div>
 					</li>
 				</ul>
-				
+
 				<div class="w-full">
 					<div class="header-cart-total w-full p-tb-40">
 						Total: $75.00
 					</div>
 
 					<div class="header-cart-buttons flex-w w-full">
-						<a href="shoping-cart.html" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
+						<a href="shoping-cart.html"
+							class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
 							View Cart
 						</a>
 
-						<a href="shoping-cart.html" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-b-10">
+						<a href="shoping-cart.html"
+							class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-b-10">
 							Check Out
 						</a>
 					</div>
@@ -518,15 +578,16 @@
 									Men Collection 2018
 								</span>
 							</div>
-								
+
 							<div class="layer-slick1 animated visible-false" data-appear="fadeInUp" data-delay="800">
 								<h2 class="ltext-104 cl2 p-t-19 p-b-43 respon1">
 									New arrivals
 								</h2>
 							</div>
-								
+
 							<div class="layer-slick1 animated visible-false" data-appear="zoomIn" data-delay="1600">
-								<a href="product.html" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
+								<a href="product.html"
+									class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
 									Shop Now
 								</a>
 							</div>
@@ -594,7 +655,8 @@
 				<div class="block1 wrap-pic-w">
 					<img src="images/banner-04.jpg" alt="IMG-BANNER">
 
-					<a href="product.html" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
+					<a href="product.html"
+						class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
 						<div class="block1-txt-child1 flex-col-l">
 							<span class="block1-name ltext-102 trans-04 p-b-8">
 								Women
@@ -619,7 +681,8 @@
 				<div class="block1 wrap-pic-w">
 					<img src="images/banner-05.jpg" alt="IMG-BANNER">
 
-					<a href="product.html" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
+					<a href="product.html"
+						class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
 						<div class="block1-txt-child1 flex-col-l">
 							<span class="block1-name ltext-102 trans-04 p-b-8">
 								Men
@@ -644,7 +707,8 @@
 				<div class="block1 wrap-pic-w">
 					<img src="images/banner-06.jpg" alt="IMG-BANNER">
 
-					<a href="product.html" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
+					<a href="product.html"
+						class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
 						<div class="block1-txt-child1 flex-col-l">
 							<span class="block1-name ltext-102 trans-04 p-b-8">
 								Luxury
@@ -700,123 +764,199 @@
 				<!-- Tab panes -->
 				<div class="tab-content p-t-50 " style="display: flex;">
 					<!-- - -->
-					<% products.slice().reverse().forEach((row, index) => { %>
-					<div class="tab-pane fade show active" id="best-seller" role="tabpanel" style="">
-						<!-- Slide2 -->
-						<div class="wrap-slick2">
-							<div class="slick2">
-								<div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
-									<!-- Product Card -->
-									<div class="product-card">
-										<!-- Product Image -->
-										<div class="product-image">
-											
-											<a href="/productImages/<%= row._id %>" class="mask">
-												<img class="img-responsive zoom-img" src="/productImages/<%= row.image.length > 0 ? row.image[0] : 'default-image.jpg' %>" alt="<%= row.image %>" />
-											</a>
-										</div>
-				
-										<!-- Product Details -->
-										<div class="product-details">
-											<!-- Product Name -->
-											<h2 class="product-name">
-												<a href="product-detail.html"><%= row.name %></a>
-											</h2>
-				
-											<!-- Product Price -->
-											<span class="product-price"> &#x20b9 <%= row.price %></span>
-				
-											<!-- Wishlist Button -->
-											<div class="wishlist-btn">
-												<a href="#" class="add-to-wishlist">
-													<img src="images/icons/icon-heart-01.png" alt="Wishlist Icon">
+					<% products.slice().reverse().forEach((row, index)=> { %>
+						<div class="tab-pane fade show active" id="best-seller" role="tabpanel" style="">
+							<!-- Slide2 -->
+							<div class="wrap-slick2">
+								<div class="slick2">
+									<div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
+										<!-- Product Card -->
+										<div class="product-card">
+											<!-- Product Image -->
+											<div class="product-image">
+
+												<a href="/productImages/<%= row._id %>" class="mask">
+													<img class="img-responsive zoom-img"
+														src="/productImages/<%= row.image.length > 0 ? row.image[0] : 'default-image.jpg' %>"
+														alt="<%= row.image %>" />
 												</a>
 											</div>
-											
-											<h3>
-												<a class="btn btn-secondary" href="/productdetails/<%= row._id %>">View Details</a>
-												<span>&nbsp;</span>
-												<% if (row.stock > 0) { %>
-													<a class="btn btn-primary" href="/addtocart/<%= row._id %>" onclick="showAddedToCartMessage()">Add to Cart</a>
-												<% } else { %>
-													<button class="btn btn-primary" disabled>Out of Stock</button>
-												<% } %>
-											
-												<!-- The price display -->
-											</h3>
+
+											<!-- Product Details -->
+											<div class="product-details">
+												<!-- Product Name -->
+												<h2 class="product-name">
+													<a href="product-detail.html">
+														<%= row.name %>
+													</a>
+												</h2>
+
+												<!-- Product Price -->
+												<span class="product-price"> &#x20b9 <%= row.price %></span>
+
+												<!-- Wishlist Button -->
+												<div class="wishlist-btn">
+													<a href="#" class="add-to-wishlist">
+														<img src="images/icons/icon-heart-01.png" alt="Wishlist Icon">
+													</a>
+												</div>
+
+												<h3>
+													<a class="btn btn-secondary"
+														href="/productdetails/<%= row._id %>">View Details</a>
+													<span>&nbsp;</span>
+													<% if (row.stock> 0) { %>
+														<a class="btn btn-primary" href="/addtocart/<%= row._id %>"
+															onclick="showAddedToCartMessage()">Add to Cart</a>
+														<% } else { %>
+															<button class="btn btn-primary" disabled>Out of
+																Stock</button>
+															<% } %>
+
+																<!-- The price display -->
+												</h3>
+											</div>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-					</div>
-					<% }) %>
-				
-					<!-- Add other tabs and content as needed -->
+						<% }) %>
+
+							<!-- Add other tabs and content as needed -->
 				</div>
-				
+
 			</div>
 		</div>
 	</section>
 
 
-	
 
 
-	<!-- Footer -->
-	
-	<footer class="footer">
-		<div class="container">
-		  <div class="row">
-			<div class="col mb-4 mb-sm-0">
-			  <h4>Categories</h4>
-			  <ul>
-				<li><a href="#">Women</a></li>
-				<li><a href="#">Men</a></li>
-				<li><a href="#">Shoes</a></li>
-				<li><a href="#">Watches</a></li>
-			  </ul>
-			</div>
-	
-			<div class="col mb-4 mb-sm-0">
-			  <h4>Help</h4>
-			  <ul>
-				<li><a href="#">Track Order</a></li>
-				<li><a href="#">Returns</a></li>
-				<li><a href="#">Shipping</a></li>
-				<li><a href="#">FAQs</a></li>
-			  </ul>
-			</div>
-	
-			<div class="col mb-4 mb-sm-0">
-			  <h4>GET IN TOUCH</h4>
-			  <p>Any questions? Let us know in store at 8th floor, 379 Hudson St, New York, NY 10018 or call us on (+1) 96 716 6879</p>
-			  <div class="social-icons">
-				<a href="#" class="fs-18"><i class="fa fa-facebook"></i></a>
-				<a href="#" class="fs-18"><i class="fa fa-instagram"></i></a>
-				<a href="#" class="fs-18"><i class="fa fa-pinterest-p"></i></a>
-			  </div>
-			</div>
-	
-			<div class="col">
-			  <h4>Newsletter</h4>
-			  <form>
-				<!-- Your newsletter form goes here -->
-			  </form>
-			</div>
+
+<!-- Footer -->
+<footer class="text-center text-lg-start bg-body-tertiary text-muted">
+	<!-- Section: Social media -->
+	<section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+	  <!-- Left -->
+	  <div class="me-5 d-none d-lg-block">
+		<span>Get connected with us on social networks:</span>
+	  </div>
+	  <!-- Left -->
+  
+	  <!-- Right -->
+	  <div>
+		<a href="" class="me-4 text-reset">
+		  <i class="fab fa-facebook-f"></i>
+		</a>
+		<a href="" class="me-4 text-reset">
+		  <i class="fab fa-twitter"></i>
+		</a>
+		<a href="" class="me-4 text-reset">
+		  <i class="fab fa-google"></i>
+		</a>
+		<a href="" class="me-4 text-reset">
+		  <i class="fab fa-instagram"></i>
+		</a>
+		<a href="" class="me-4 text-reset">
+		  <i class="fab fa-linkedin"></i>
+		</a>
+		<a href="" class="me-4 text-reset">
+		  <i class="fab fa-github"></i>
+		</a>
+	  </div>
+	  <!-- Right -->
+	</section>
+	<!-- Section: Social media -->
+  
+	<!-- Section: Links  -->
+	<section class="">
+	  <div class="container text-center text-md-start mt-5">
+		<!-- Grid row -->
+		<div class="row mt-3">
+		  <!-- Grid column -->
+		  <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+			<!-- Content -->
+			<h6 class="text-uppercase fw-bold mb-4">
+			  <i class="fas fa-gem me-3"></i>Company name
+			</h6>
+			<p>
+			  Here you can use rows and columns to organize your footer content. Lorem ipsum
+			  dolor sit amet, consectetur adipisicing elit.
+			</p>
 		  </div>
-	
-		  <div class="row mt-4">
-			<div class="col-12 text-center">
-			  <div class="flex-c-m flex-w p-b-18">
-				<!-- Payment icons go here -->
-			  </div>
-			  <p>&copy; <script>document.write(new Date().getFullYear());</script> All rights reserved | Made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a> &amp; distributed by <a href="https://themewagon.com" target="_blank">ThemeWagon</a></p>
-			</div>
+		  <!-- Grid column -->
+  
+		  <!-- Grid column -->
+		  <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+			<!-- Links -->
+			<h6 class="text-uppercase fw-bold mb-4">
+			  Products
+			</h6>
+			<p>
+			  <a href="#!" class="text-reset">Angular</a>
+			</p>
+			<p>
+			  <a href="#!" class="text-reset">React</a>
+			</p>
+			<p>
+			  <a href="#!" class="text-reset">Vue</a>
+			</p>
+			<p>
+			  <a href="#!" class="text-reset">Laravel</a>
+			</p>
 		  </div>
+		  <!-- Grid column -->
+  
+		  <!-- Grid column -->
+		  <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+			<!-- Links -->
+			<h6 class="text-uppercase fw-bold mb-4">
+			  Useful links
+			</h6>
+			<p>
+			  <a href="#!" class="text-reset">Pricing</a>
+			</p>
+			<p>
+			  <a href="#!" class="text-reset">Settings</a>
+			</p>
+			<p>
+			  <a href="#!" class="text-reset">Orders</a>
+			</p>
+			<p>
+			  <a href="#!" class="text-reset">Help</a>
+			</p>
+		  </div>
+		  <!-- Grid column -->
+  
+		  <!-- Grid column -->
+		  <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+			<!-- Links -->
+			<h6 class="text-uppercase fw-bold mb-4">Contact</h6>
+			<p><i class="fas fa-home me-3"></i> New York, NY 10012, US</p>
+			<p>
+			  <i class="fas fa-envelope me-3"></i>
+			  info@example.com
+			</p>
+			<p><i class="fas fa-phone me-3"></i> + 01 234 567 88</p>
+			<p><i class="fas fa-print me-3"></i> + 01 234 567 89</p>
+		  </div>
+		  <!-- Grid column -->
 		</div>
-	  </footer>
-	
+		<!-- Grid row -->
+	  </div>
+	</section>
+	<!-- Section: Links  -->
+  
+	<!-- Copyright -->
+	<div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+	  © 2021 Copyright:
+	  <a class="text-reset fw-bold" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+	</div>
+	<!-- Copyright -->
+  </footer>
+  <!-- Footer -->
+
 
 
 	<!-- Back to top -->
@@ -848,7 +988,8 @@
 										<div class="wrap-pic-w pos-relative">
 											<img src="images/product-detail-01.jpg" alt="IMG-PRODUCT">
 
-											<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="images/product-detail-01.jpg">
+											<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
+												href="images/product-detail-01.jpg">
 												<i class="fa fa-expand"></i>
 											</a>
 										</div>
@@ -858,7 +999,8 @@
 										<div class="wrap-pic-w pos-relative">
 											<img src="images/product-detail-02.jpg" alt="IMG-PRODUCT">
 
-											<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="images/product-detail-02.jpg">
+											<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
+												href="images/product-detail-02.jpg">
 												<i class="fa fa-expand"></i>
 											</a>
 										</div>
@@ -868,7 +1010,8 @@
 										<div class="wrap-pic-w pos-relative">
 											<img src="images/product-detail-03.jpg" alt="IMG-PRODUCT">
 
-											<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="images/product-detail-03.jpg">
+											<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
+												href="images/product-detail-03.jpg">
 												<i class="fa fa-expand"></i>
 											</a>
 										</div>
@@ -877,7 +1020,7 @@
 							</div>
 						</div>
 					</div>
-					
+
 					<div class="col-md-6 col-lg-5 p-b-30">
 						<div class="p-r-50 p-t-5 p-lr-0-lg">
 							<h4 class="mtext-105 cl2 js-name-detail p-b-14">
@@ -889,9 +1032,10 @@
 							</span>
 
 							<p class="stext-102 cl3 p-t-23">
-								Nulla eget sem vitae eros pharetra viverra. Nam vitae luctus ligula. Mauris consequat ornare feugiat.
+								Nulla eget sem vitae eros pharetra viverra. Nam vitae luctus ligula. Mauris consequat
+								ornare feugiat.
 							</p>
-							
+
 							<!--  -->
 							<div class="p-t-33">
 								<div class="flex-w flex-r-m p-b-10">
@@ -939,37 +1083,44 @@
 												<i class="fs-16 zmdi zmdi-minus"></i>
 											</div>
 
-											<input class="mtext-104 cl3 txt-center num-product" type="number" name="num-product" value="1">
+											<input class="mtext-104 cl3 txt-center num-product" type="number"
+												name="num-product" value="1">
 
 											<div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
 												<i class="fs-16 zmdi zmdi-plus"></i>
 											</div>
 										</div>
 
-										<button class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
+										<button
+											class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
 											Add to cart
 										</button>
 									</div>
-								</div>	
+								</div>
 							</div>
 
 							<!--  -->
 							<div class="flex-w flex-m p-l-100 p-t-40 respon7">
 								<div class="flex-m bor9 p-r-10 m-r-11">
-									<a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 js-addwish-detail tooltip100" data-tooltip="Add to Wishlist">
+									<a href="#"
+										class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 js-addwish-detail tooltip100"
+										data-tooltip="Add to Wishlist">
 										<i class="zmdi zmdi-favorite"></i>
 									</a>
 								</div>
 
-								<a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100" data-tooltip="Facebook">
+								<a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100"
+									data-tooltip="Facebook">
 									<i class="fa fa-facebook"></i>
 								</a>
 
-								<a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100" data-tooltip="Twitter">
+								<a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100"
+									data-tooltip="Twitter">
 									<i class="fa fa-twitter"></i>
 								</a>
 
-								<a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100" data-tooltip="Google Plus">
+								<a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100"
+									data-tooltip="Google Plus">
 									<i class="fa fa-google-plus"></i>
 								</a>
 							</div>
@@ -980,60 +1131,60 @@
 		</div>
 	</div>
 
-<!--===============================================================================================-->	
+	<!--===============================================================================================-->
 	<script src="/vendor/jquery/jquery-3.2.1.min.js"></script>
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<script src="/vendor/animsition/js/animsition.min.js"></script>
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<script src="/vendor/bootstrap/js/popper.js"></script>
 	<script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<script src="/vendor/select2/select2.min.js"></script>
-	<script>  
-		$(".js-select2").each(function(){
+	<script>
+		$(".js-select2").each(function () {
 			$(this).select2({
 				minimumResultsForSearch: 20,
 				dropdownParent: $(this).next('.dropDownSelect2')
 			});
 		})
 	</script>
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<script src="/vendor/daterangepicker/moment.min.js"></script>
 	<script src="/vendor/daterangepicker/daterangepicker.js"></script>
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<script src="/vendor/slick/slick.min.js"></script>
 	<script src="/js/slick-custom.js"></script>
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<script src="/vendor/parallax100/parallax100.js"></script>
 	<script>
-        $('.parallax100').parallax100();
+		$('.parallax100').parallax100();
 	</script>
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<script src="/vendor/MagnificPopup/jquery.magnific-popup.min.js"></script>
 	<script>
-		$('.gallery-lb').each(function() { // the containers for all your galleries
+		$('.gallery-lb').each(function () { // the containers for all your galleries
 			$(this).magnificPopup({
-		        delegate: 'a', // the selector for gallery item
-		        type: 'image',
-		        gallery: {
-		        	enabled:true
-		        },
-		        mainClass: 'mfp-fade'
-		    });
+				delegate: 'a', // the selector for gallery item
+				type: 'image',
+				gallery: {
+					enabled: true
+				},
+				mainClass: 'mfp-fade'
+			});
 		});
 	</script>
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<script src="/vendor/isotope/isotope.pkgd.min.js"></script>
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<script src="/vendor/sweetalert/sweetalert.min.js"></script>
 	<script>
-		$('.js-addwish-b2').on('click', function(e){
+		$('.js-addwish-b2').on('click', function (e) {
 			e.preventDefault();
 		});
 
-		$('.js-addwish-b2').each(function(){
+		$('.js-addwish-b2').each(function () {
 			var nameProduct = $(this).parent().parent().find('.js-name-b2').html();
-			$(this).on('click', function(){
+			$(this).on('click', function () {
 				swal(nameProduct, "is added to wishlist !", "success");
 
 				$(this).addClass('js-addedwish-b2');
@@ -1041,10 +1192,10 @@
 			});
 		});
 
-		$('.js-addwish-detail').each(function(){
+		$('.js-addwish-detail').each(function () {
 			var nameProduct = $(this).parent().parent().parent().find('.js-name-detail').html();
 
-			$(this).on('click', function(){
+			$(this).on('click', function () {
 				swal(nameProduct, "is added to wishlist !", "success");
 
 				$(this).addClass('js-addedwish-detail');
@@ -1054,32 +1205,33 @@
 
 		/*---------------------------------------------*/
 
-		$('.js-addcart-detail').each(function(){
+		$('.js-addcart-detail').each(function () {
 			var nameProduct = $(this).parent().parent().parent().parent().find('.js-name-detail').html();
-			$(this).on('click', function(){
+			$(this).on('click', function () {
 				swal(nameProduct, "is added to cart !", "success");
 			});
 		});
 	</script>
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<script src="/vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
 	<script>
-		$('.js-pscroll').each(function(){
-			$(this).css('position','relative');
-			$(this).css('overflow','hidden');
+		$('.js-pscroll').each(function () {
+			$(this).css('position', 'relative');
+			$(this).css('overflow', 'hidden');
 			var ps = new PerfectScrollbar(this, {
 				wheelSpeed: 1,
 				scrollingThreshold: 1000,
 				wheelPropagation: false,
 			});
 
-			$(window).on('resize', function(){
+			$(window).on('resize', function () {
 				ps.update();
 			})
 		});
 	</script>
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<script src="/js/main.js"></script>
 
 </body>
+
 </html>

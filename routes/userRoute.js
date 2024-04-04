@@ -37,10 +37,12 @@ user_Route.get('/forget', userController.forgetLoad)
 
 user_Route.post('/signup', userController.signupPost)
 
+user_Route.post('/emailverify',userController.verifyEmail)
+
 
 user_Route.get('/otp', userController.getOtp);
 
-user_Route.post('/user/otp', userController.otpPost);
+user_Route.post('/user/otp', userController.otpPost); 
 
 user_Route.get('/user/newotp', userController.newOtp);
 
@@ -48,7 +50,16 @@ user_Route.get('/user/newotp', userController.newOtp);
 
 user_Route.post('/login', userController.loginPost);
 
-user_Route.get('/productdetails/:id',userController.productdetails)
+user_Route.get('/productdetails/:id',userAuth.isLogin,userController.productdetails)
+
+
+
+
+// ______________ CART route ______________
+
+user_Route.get('/cartPage',userAuth.isLogin, userController.cartGet);
+user_Route.get('/productaddtocart/:id', userController.addToCart);
+// ________________________________________
 
 
 

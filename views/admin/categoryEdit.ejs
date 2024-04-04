@@ -33,16 +33,7 @@
 
 <body>
     <div class="container-xxl position-relative bg-white d-flex p-0">
-        <!-- Spinner Start -->
-        <!-- <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
-                <span class="sr-only">Loading...</span>
-            </div>
-        </div> -->
-        <!-- Spinner End -->
-
-
-        <!-- Sidebar Start -->
+        
         <div class="sidebar pe-4 pb-3">
             <nav class="navbar bg-light navbar-light">
                 <a href="index.html" class="navbar-brand mx-4 mb-3">
@@ -156,7 +147,7 @@
 </nav>
             <!-- Navbar End -->
             
-            <form action="/addCategoryLoad" method="post" onsubmit="return validateForm()">
+            <form action="/editCategoryUpdate/<%=category._id%>" method="post" onsubmit="return validateForm()">
                 <div class="form-group">
                   <label for="productName"><i class="fas fa-user"></i>Category</label>
                   <br>
@@ -167,7 +158,7 @@
                 
                 <div class="form-group">
                   <label for="productDescription"><i class="fas fa-file-alt"></i> Description of Category</label>
-                  <textarea class="form-control" name="description" value="<%= category.description %>" id="Category Description" rows="3" ></textarea>
+                  <textarea class="form-control" name="description" value="" id="CategoryDescription" rows="3" ><%-category.description %></textarea>
                   <span id="descriptionError" style="color: red;"></span>
                 </div>
                 
@@ -187,5 +178,37 @@
     <script src="js/adminMain.js"></script>
     
 </body>
+<script>
+    function validateForm() {
+
+        
+        var category = document.getElementById("categoryName").value.trim();
+        var description = document.getElementById("CategoryDescription").value.trim();
+        var categoryError = document.getElementById("categoryError");
+        var descriptionError = document.getElementById("descriptionError");
+        var isValid = true;
+
+        // Validate category
+        if (category === "") {
+            categoryError.innerText = "Category cannot be empty";
+            categoryError.style.color = 'red';
+            isValid = false;
+        } else {
+            categoryError.innerText = ""; // Clear error message if valid
+        }
+
+        // Validate description
+        if (description === "") {
+            descriptionError.innerText = "Description cannot be empty";
+            descriptionError.style.color = 'red';
+            isValid = false;
+        } else {
+            descriptionError.innerText = ""; // Clear error message if valid
+        }
+
+        return isValid;
+    }
+</script>
+
 
 </html>

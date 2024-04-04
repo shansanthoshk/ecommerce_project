@@ -55,6 +55,8 @@ admin_Route.post('/category/unblock/:id',adminController.categoryUnblock)
 admin_Route.post('/category/block/:id',adminController.categoryBlock)
 
 admin_Route.get('/editCategoryLoad/:id',adminController.categoryEdit)
+admin_Route.post('/editCategoryUpdate/:id',adminController.editCategoryUpdate)
+
 admin_Route.get('/editProductLoad',productController.productEdit)
 
 

@@ -23,7 +23,6 @@ mongoose.connect('mongodb://0.0.0.0:27017/projectDataBase')
 })
 
 app.use(express.static(path.join(__dirname, 'public')));
-console.log("jyfyjh");
 
 
 

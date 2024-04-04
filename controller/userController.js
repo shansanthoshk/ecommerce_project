@@ -1,5 +1,7 @@
 const userCollection=require('../models/userSchema')
 const productCollection = require('../models/productSchema');
+const Cart = require('../models/cartSchema');
+
 const generateOtp=require('otp-generator')
 const otpSchema=require('../models/otp')
 const nodemailer = require("nodemailer");
@@ -84,7 +86,7 @@ function sendOtp(otp,email){
         }else{
             console.log('OTP send!!',info.response);
         }
-    })
+    }) 
 }
 
 
@@ -256,6 +258,7 @@ const getOtp = async (req, res) => {
         if(check){
             if(check && check.password===req.body.password){
                 req.session.userId = check._id.toString();
+                req.session.userData = check;
                 console.log("Successfull");
                 console.log("User ID:",req.session.userId);
                 // ___________________________________________
@@ -340,6 +343,155 @@ const getOtp = async (req, res) => {
         }
         
   }
+
+  const verifyEmail= async (req,res)=>{
+    try{
+        const userremail=await userCollection.findOne({email:req.body.email})
+        if(userremail){
+            otp=generateOtp.generate(4,{digits:true,alphabets:false,specialChars:false})
+            
+            transporter=nodemailer.createTransport({
+                service:"gmail",
+                auth:{
+                    user: 'testtdemoo11111@gmail.com',
+                      pass: 'wikvaxsgqyebphvh',
+                },
+        })
+        const mailOptions={
+            from:`${req.body.email}`,
+            to:`${req.body.email}`,
+            subject:"Your Otp code",
+            text:`your otp code is:${otp}`
+        }
+        transporter.sendMail(mailOptions,(error,info) =>{
+            if(error){
+                console.error("error sending otp",error)
+    
+            }
+            else{
+                console.log("otp send:",info.response);
+            }
+    
+        })
+        let errorMessage=''
+        res.render('forgototp',{errorMessage,user:userremail._id})
+
+
+        }else{
+            let error='Email not match'
+            res.render('forgot',{error})
+        }
+
+
+    }catch(err){
+        console.log("err",err)
+    }
+  }
+
+  const cartGet = async (req,res)=>{
+    try {
+        res.render('cartPage')
+    } catch (error) {
+        console.log(err);
+        res.status(500).send('Internal Server Error');
+    }
+        
+  }
+
+  const addToCart = async (req, res) => {
+        try {
+            console.log("add to cart");
+            const productId = req.params.id;
+            const user = req.session.userData;
+            console.log(req.session.userData);
+            console.log("add to id", productId);
+
+            let userData = await userCollection.findById(user._id);
+            if (!userData) {
+                return res.redirect('/');
+            }
+            // check pont 1_____________________________________________________________;
+
+            const productData = await productCollection.findOne({ _id: productId });
+
+            let userCart = await Cart.findOne({ userId: userData._id });
+            // check point 2___________________________________________________________;
+
+            if (!userCart) {
+                console.log('no cart');
+                // =================================
+                let value = 1;
+                // console.log(productData.product_status);
+                // if (productData.product_status === false) {
+                //     value = 0;
+                // }
+                // =================================
+                userCart = new Cart({
+                    userId: userData._id,
+                    items: [
+                        {
+                            product: productId,
+                            quantity: value,
+                            product_price: productData.price,
+                        },
+                    ],
+
+                    total: productData.price * value,
+                    totalQuantity: value,
+                });
+                await userCart.save();
+                // check point 3________________________________________________________;
+            } else {
+                // =================================
+                console.log("ADDING......................");
+                let value = 1;
+                // console.log(productData.product_status);
+                console.log(`serching id ${productId}`);
+                // if (productData.product_status === false) {
+                //     value = 0;
+                // } else {
+                //     value = 1;
+                // }
+                // =================================
+                await Cart.updateOne(
+                    { userId: userData._id },
+                    {
+                        $push: { items: { product: productId, quantity: value, product_price: productData.price } }
+
+                    }
+                )
+
+                if (value == 1) {
+                    let cartdata = await Cart.findOne({ userId: userData._id });
+                    const productIn_items = cartdata.items.find(
+                        (item) => item.product.toString() === productId,
+                    );
+                    // console.log(`product st true ?:id ${productIn_items.product}`);
+
+
+                    cartdata.total += productIn_items.product_price;
+                    cartdata.totalQuantity += 1;
+                    await cartdata.save();
+
+                }
+
+
+
+            }
+
+            console.log("data saved");
+
+
+            let data = productId;
+
+            res.json(data);
+        } catch (error) {
+            console.error('Error adding product to cart:', error);
+            return res.status(500).send('Internal Server Error');
+        }
+    }
+  
+
 module.exports={
     loginLoad,
     signupLoad,
@@ -353,5 +505,10 @@ module.exports={
     loginPost,
     home,
     logout,
-    productdetails
+    productdetails,
+    verifyEmail,
+    cartGet,
+    addToCart,
+    
+
 }

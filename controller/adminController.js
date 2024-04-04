@@ -41,6 +41,7 @@ const adminUser= async (req,res)=>{
     });
 } catch(err){
     console.error("Error:",err);
+    res.render('errorPage')
     res.status(500).send("Internal server error");
     }
 }
@@ -212,11 +213,65 @@ const categoryEdit= async (req,res)=>{
         const id=req.params.id;
         const category=await categoryCollection.findById({ _id:id})
         // console.log()
-        console.log(category);
+        console.log(category.description);
         res.render('categoryEdit',{category})
     }catch(err){
         console.error("Error",err);
 
+    }
+}
+
+
+const editCategoryUpdate = async (req,res)=>{
+    try{
+        console.log("Entered");
+        const categoryId = req.params.id;
+        const enteredCategory = req.body.category.trim(); 
+        const enteredDescription = req.body.description.trim(); 
+        const errors = {};
+
+        if (!enteredCategory) {
+            errors.category = { msg: 'Category is required.' };
+        }
+
+       
+        if (!enteredDescription) {
+            errors.description = { msg: 'Description is required.' };
+        }
+
+        const existingCategory = await categoryCollection.findOne({
+            $and: [
+                { category: { $regex: new RegExp('^' + enteredCategory + '$', 'i') } },
+                { _id: { $ne: categoryId } }
+            ],
+            isDeleted: false
+        });
+
+
+        if (existingCategory) {
+            errors.category = { msg: 'Category already exists.' };
+        }
+
+        if (Object.keys(errors).length > 0) {
+           
+            return res.render('categoryEdit', { category: req.body, errors,message: '' });
+        }
+
+        const result = await categoryCollection.findByIdAndUpdate(categoryId, {
+            category: enteredCategory,
+            description: enteredDescription,
+        });
+
+        if (!result) {
+            console.log('Category not found');
+            
+        } else {
+            res.redirect('/categoryManagement');
+        }
+
+    }catch(err){
+        console.error("ErrorEditUpdate",err)
+        res.redirect('/admin/category');
     }
 }
     
@@ -235,5 +290,6 @@ module.exports={
     adminCategoryInsert,
     categoryBlock,
     categoryUnblock,
-    categoryEdit
+    categoryEdit,
+    editCategoryUpdate
 }
