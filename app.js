@@ -14,7 +14,7 @@ app.use(session({
 }))
 
 
-mongoose.connect('mongodb://0.0.0.0:27017/projectDataBase')
+mongoose.connect('mongodb://0.0.0.0:27017/projectDataBase') //env
 .then(()=>{
     console.log("MongoDb connected!!")
 })
@@ -47,6 +47,6 @@ const sessionSecret = crypto.randomUUID();
 
 
 app.listen(7000,()=>{
-    console.log("Port connected!!")
+    console.log("Port connected!!") //env
 })
 

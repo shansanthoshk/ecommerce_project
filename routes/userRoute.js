@@ -59,8 +59,15 @@ user_Route.get('/productdetails/:id',userAuth.isLogin,userController.productdeta
 
 user_Route.get('/cartPage',userAuth.isLogin, userController.cartGet);
 user_Route.get('/productaddtocart/:id', userController.addToCart);
+user_Route.get('/cart_delete/:id', userController.productDeleteFromTheCart);
+user_Route.get('/cart_drop/:id', userController.cart_drop);
+user_Route.get('/cart_add/:id', userController.cart_add);
 // ________________________________________
 
+
+//_____________ CHECKOUT ROUTE _____________
+
+user_Route.get('/checkoutPage',userController.checkoutGet);
 
 
 

@@ -194,11 +194,24 @@
       background-position-x: 95%;
       background-position-y: center;
     }
+    .action_div{
+      padding: 0 1vh;
+      cursor: pointer;
+      border:.5px solid rgba(0, 0, 0, 0.37);
+      border-radius:2px;
+      margin-left:2px;
+      user-select: none;
+    }
+    .action_div:focus{
+      outline: none
+    }
   </style>
 </head>
 
 <body>
   <div class="card">
+    
+    <% if(userCart&&userCart.items.length){%>
     <div class="row">
       <div class="col-md-8 cart">
         <div class="title">
@@ -207,33 +220,58 @@
               <h4><b>Shopping Cart</b></h4>
             </div>
             <div class="col align-self-center text-right text-muted">
-              3 items
+              <%= userCart.items.length %> items
             </div>
           </div>
         </div>
 
         <!-- items list loop -->
-        <div class="row border-top border-bottom">
-          <div class="row main align-items-center">
-            <div class="col-2">
-              <img class="img-fluid" src="https://i.imgur.com/1GrakTl.jpg" />
-            </div>
-            <div class="col">
-              <div class="row text-muted">Shirt</div>
-              <div class="row">Cotton T-shirt</div>
-            </div>
-            <div class="col">
-              <a href="#">-</a><a href="#" class="border">1</a><a href="#">+</a>
-            </div>
-            <div class="col">
-              &euro; 44.00 <span class="close">&#10005;</span>
-            </div>
-          </div>
-        </div>
-        <!-- __________________ -->
-        <div class="back-to-shop">
-          <a href="#">&leftarrow;</a><span class="text-muted">Back to shop</span>
-        </div>
+        <%#=userCart%>
+        
+
+            <% userCart.items.forEach((item)=>{%>
+              <div class="row border-top border-bottom" style="position: relative;">
+                <div class="row main align-items-center">
+                  <div class="col-2">
+                    <img class="img-fluid" src="/productImages/<%=item.product.image[0] %>" />
+                  </div>
+                  <div class="col">
+                    <div class="row text-muted">
+                      <%=item.product.name%>
+                    </div>
+                    <div class="row" style="font-size: 12px">
+                      <%=item.product.description.substring(0,40)%>
+                        <% if(item.product.description.length>40){%>....<% } %>
+                    </div>
+                  </div>
+                  
+                  <div class="col " style="display: flex; ">
+                    <!-- <a href="#">-</a><a href="#" class="border">1</a><a href="#">+</a> -->
+                    <button class="minus- action_div minus-<%=item.product._id%>" onclick="decreaseValue('<%=item.product._id%>')">-</button>
+                    <div class="value action_div" id="value-<%=item.product._id%>" data-qty="<%=item.product.stock%>" data-id="<%=item.product._id%>"><%=item.quantity%></div>
+                    <button class="plus- action_div plus-<%=item.product._id%>" onclick="increaseValue('<%=item.product._id%>')">+</button>
+
+
+                  </div>
+                  <div class="stock_msg stock_msg-<%=item.product._id%>" style="position: absolute; margin:3rem 0 0 45%; font-size:10px; color:rgb(236, 147, 147); display:none;">
+                    Limit exceeded
+                  </div>
+
+                  <div class="col">
+                    <!-- close button here  -->
+                    &#8377; <%=item.product.price %><span class="close" style="cursor: pointer"
+                        onclick="deleteproduct('<%=item.product._id%>')">&#10005;</span>
+                  </div>
+                </div>
+              </div>
+              <% }) %>
+               
+                  <!-- __________________ -->
+                  <div style="margin-top: 4.5rem">
+                    <a href="/" class="back-to-shop">
+                      &leftarrow;<span class="text-muted">Back to shop</span>
+                    </a>
+                  </div>
       </div>
       <div class="col-md-4 summary">
         <div>
@@ -241,28 +279,152 @@
         </div>
         <hr />
         <div class="row">
-          <div class="col" style="padding-left: 0">ITEMS 3</div>
-          <div class="col text-right">&euro; 132.00</div>
+          <div class="col " style="padding-left: 0">ITEMS <span class="qty"><%= userCart.totalQuantity %></span></div>
+          <div class="col text-right">&#8377; <span class="price"><%= userCart.total %></span></div>
         </div>
         <form>
           <p>SHIPPING</p>
           <select>
-            <option class="text-muted">Standard-Delivery- &euro;5.00</option>
+            <option class="text-muted">Standard-Delivery-Fee</option>
           </select>
-          <p>GIVE CODE</p>
-          <input id="code" placeholder="Enter your code" />
+          <!-- <p>GIVE CODE</p>
+          <input id="code" placeholder="Enter your code" /> -->
         </form>
         <div class="row" style="border-top: 1px solid rgba(0, 0, 0, 0.1); padding: 2vh 0">
           <div class="col">TOTAL PRICE</div>
-          <div class="col text-right">&euro; 137.00</div>
+          <div class="col text-right ">&#8377; <span class="amountv"><%= userCart.total %></span></div>
         </div>
-        <button class="btn">CHECKOUT</button>
+        <a class="btn" href="/checkoutPage">CHECKOUT</a>
       </div>
     </div>
+    
+      <% } else{%>
+          <img style="width:200px; margin: 0 auto;" src="/images/emptycart.png" alt="">
+          <div style="margin-bottom: 2rem">
+            <a href="/" class="back-to-shop">
+              &leftarrow;<span class="text-muted">Back to shop</span>
+            </a>
+          </div>
+        <% } %>
   </div>
+  <!-- /////////SCRIPT AREA///////// -->
+    <!-- qty plus and minus css while loading the page  -->
+    <script>
+      const valueElements = document.querySelectorAll('.value');
+      valueElements.forEach((valueElement) => {
+        const value = parseInt(valueElement.innerText);
+        let id = valueElement.getAttribute("data-id")
+        let qty = valueElement.getAttribute("data-qty")
+        console.log(value);
+        if (value <= 1) {
+          document.querySelector(".minus-" + id).setAttribute('disabled', true);
+        }
+        if (value >= qty) {
+          document.querySelector('.plus-' + id).setAttribute('disabled', true);
+          document.querySelector(".stock_msg-" + id).style.display = "block"
+        }
+        if (value == 0) {
+          document.querySelector('.plus-' + id).setAttribute('disabled', true);
+          // document.querySelector(".out_stock-" + id).style.display = "block"
+          // document.querySelector(".single-" + id).style.opacity = ".5"
+          // document.querySelector(".out-of-stock-" + id).style.display = "block"
+  
+  
+        }
+  
+      });
+    </script>
+    <!-- ============================================== -->
+    
+  <!-- cart add and remove action fetch requst  -->
+  <script>
+    //============================(-)========================================
+    function decreaseValue(id) {
+      var value = document.getElementById('value-' + id).innerText;
+      value = parseInt(value);
+      let qty = document.getElementById('value-' + id).getAttribute("data-qty")
+      console.log(`server stock is ${qty}`);
+      if (value > 0) {
+        value--;
+        document.getElementById('value-' + id).innerText = value;
 
 
+        if (value <= 1) {
+          document.querySelector('.minus-' + id).setAttribute('disabled', true);
+        }
+      }
+      console.log(`the qty of product from pm${qty}`);
+      if (value < qty) {
+        document.querySelector('.plus-' + id).removeAttribute('disabled')
+        document.querySelector(".stock_msg-" + id).style.display = "none"
+      }
+      // Fetch request
+      console.log(id);
+      fetch(`/cart_drop/${id}`)
+        .then(response => response.json())
+        .then(data => {
+          document.querySelector(".amountv").innerHTML = `${data.isCart.total}`
+          document.querySelector(".qty").innerHTML = `${data.isCart.totalQuantity}`
+          document.querySelector(".price").innerHTML = `${data.isCart.total}`
+        })
+        .catch(error => console.error('Error:', error));
+    }
+    //============================(+)========================================
+    function increaseValue(id) {
+      var value = document.getElementById('value-' + id).innerText;
+      value = parseInt(value);
+      value++;
+      document.getElementById('value-' + id).innerText = value;
+      let qty = document.getElementById('value-' + id).getAttribute("data-qty")
+      console.log(`the qty of product from pm${qty}`);
+      if (value > 1) {
+        document.querySelector('.minus-' + id).removeAttribute('disabled');
+      }
+      if (value >= qty) {
+        document.querySelector('.plus-' + id).setAttribute('disabled', true);
+        document.querySelector(".stock_msg-" + id).style.display = "block"
+      }
+      // Fetch request
+      console.log(id);
+      fetch(`/cart_add/${id}`)
+        .then(response => response.json())
+        .then(data => {
+          document.querySelector(".amountv").innerHTML = `${data.isCart.total}`
+          document.querySelector(".qty").innerHTML = `${data.isCart.totalQuantity}`
+          document.querySelector(".price").innerHTML = `${data.isCart.total}`
+        })
+        .catch(error => console.error('Error:', error));
+    }
 
+    // =====================================================================
+
+    //   delete fetch 
+    function deleteproduct(id) {
+      console.log(id);
+      fetch(`/cart_delete/${id}`)
+        .then(response => response.json())
+        .then(data => {
+          window.location.href = "/cart"
+
+        })
+        .catch(error => console.error('Error:', error));
+    }
+  </script>
+
+  <!-- ======================================== -->
+  <script>
+    
+    //   delete fetch
+    function deleteproduct(id) {
+      console.log(id);
+      fetch(`/cart_delete/${id}`)
+        .then((response) => response.json())
+        .then((data) => {
+          window.location.href = "/cartPage";
+        })
+        .catch((error) => console.error("Error:", error));
+    }
+  </script>
 </body>
 
 </html>

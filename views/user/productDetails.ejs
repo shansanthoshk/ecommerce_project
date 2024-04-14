@@ -38,12 +38,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="col-md-6 top-header-left">
 					<div class="drop">
 
-						<div class="box">
-							<h1 style="color: white;">WatchBox</h1>
-
-
-						</div>
-
+						
 
 						<div class="clearfix"></div>
 					</div>
@@ -202,7 +197,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<div class="single-para simpleCart_shelfItem">
 								<h1 style="font-size: 50px; color: black;">
 									<%= products.name %>
+									
 								</h1>
+
 
 								<div class="star-on">
 									<ul class="star-footer">
@@ -253,15 +250,29 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 												</li>
 											</ul>
 											<!-- <a href="" class="add-cart item_add">ADD TO CART</a> -->
-											<% if (products.stock> 0) { %>
-												<br>
+											
+											<% if (isInCart) { %>
+												<div class="btn btn-primary" id="goToCat_btn"
+												
+												data-product-id="<%= products._id %>" onclick="goToCat()">
+												Go to Cart</div>
 
-												<div class="btn btn-primary" id="addToCart_btn"
+
+
+												   <% }else{ %>
+
+													<div class="btn btn-primary" id="addToCart_btn"
+													<% if (products.stock<= 0) { %>disabled <% } %>
 													data-product-id="<%= products._id %>" onclick="onCartBtnClick()">Add
 													to Cart</div>
-												<% } else { %>
-													<button class="btn btn-primary" disabled>Out of Stock</button>
-													<% } %>
+
+													<div class="btn btn-primary" id="goToCat_btn" style="visibility: hidden;"
+												
+													data-product-id="<%= products._id %>" onclick="goToCat()">
+													Go to Cart</div>
+
+												   <% } %>
+
 							</div>
 						</div>
 						<div class="clearfix"> </div>
@@ -363,6 +374,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 		</div>
 	</div>
+
 	<!--end-single-->
 	<!--information-starts-->
 	<div class="information">
@@ -450,6 +462,20 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 		</div>
 	</div>
+
+	<div classs="container p-5">
+		<div class="row no-gutters">
+			<div class="col-lg-5 col-md-12 ml-auto">
+				<div class="alert alert-success fade show" role="alert">
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+						<span aria-hidden="True">&times;</span>
+					  </button>
+					 <h4 class="alert-heading">Well done!</h4>
+					  <p>This is an alert within a column. The column can be made any size at different viewpoints.</p>
+				</div>
+			</div>
+		</div>
+	</div>
 	<!-- /////////SCRIPT AREA///////// -->
 	<!-- ============ADD TO CART FETCH REQ================ -->
 
@@ -459,21 +485,24 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			const cartbtn = document.getElementById("addToCart_btn");
 			const productId = cartbtn.getAttribute('data-product-id');
 			
+			
 			console.log(productId);
 	
 			fetch(`/productaddtocart/${productId}`)
 				.then(response => response.json())
 				.then(data => {
 					if (data) {
-						// If you want to hide the button upon success
-						// cartbtn.style.display = "none";
-						// Or redirect to cart
-						// window.location.href = "/cart"; 
+						document.getElementById("goToCat_btn").style.visibility = "visible"
+						document.getElementById("addToCart_btn").style.display = "none"
+						
 					} else {
 						window.location.reload(); // Reload the page if there's an error
 					}
 				})
 				.catch(error => console.error('Error:', error));
+		}
+		let goToCat = function () {
+			window.location.href="/cartPage"
 		}
 	</script>
 	<!-- ================================================== -->
