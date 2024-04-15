@@ -1,0 +1,402 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>WatchBox_Luxury Watches A Ecommerce Category Flat Bootstrap Resposive Website </title>
+<link href="/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<!--jQuery(necessary for Bootstrap's JavaScript plugins)-->
+<script src="/js/jquery-1.11.0.min.js"></script>
+<!--Custom-Theme-files-->
+<!--theme-style-->
+<link href="/homestyle.css" rel="stylesheet" type="text/css" media="all" />	
+<!--//theme-style-->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Luxury Watches Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!--start-menu-->
+<script src="/js/simpleCart.min.js"> </script>
+<link href="/memenu.css" rel="stylesheet" type="text/css" media="all" />
+<script type="text/javascript" src="js/memenu.js"></script>
+<script>$(document).ready(function(){$(".memenu").memenu();});</script>	
+
+
+
+<style>
+	.added-to-cart {
+    background-color: green;
+    color: white;
+}
+/* Add this CSS to your existing stylesheet or in a new style tag in the head section of your HTML */
+
+
+
+.custom-select {
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    padding: 10px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    cursor: pointer;
+    outline: none;
+}
+
+.custom-select::after {
+    content: '\25BC'; /* Unicode character for down arrow */
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    font-size: 18px;
+    color: #555;
+}
+
+</style>
+
+<!--dropdown-->
+<script src="/js/jquery.easydropdown.js"></script>			
+</head>
+<body> 
+	<!--top-header-->
+	<div class="top-header">
+		<div class="container">
+			<div class="top-header-main">
+				<div class="col-md-6 top-header-left">
+					<div class="drop">
+						<div class="box">
+							<h1 style="color: white;"></h1>	
+						</div>
+						<div class="clearfix"></div>
+					</div>
+				</div>
+				<div class="col-md-6 top-header-left">
+					<div class="cart box_1">
+						<a href="/user/cart">
+							 <div class="total">
+								<span class="simpleCart_total"></span></div>
+								<img src="images/cart6.png" alt="" />
+						</a>
+						&nbsp;&nbsp;
+						<form action="/logout" method="post" style="display: inline;">
+							<button class="btns btn-red custom-btn" type="submit">
+								<i class="fas fa-sign-out-alt" style="margin-right: 5px;"></i> Logout
+							</button>
+						 </form>
+
+					</div>
+					
+				</div>
+				
+				<div class="clearfix"></div>
+			</div>
+		</div>
+	</div>
+	<!--top-header-->
+	<!--start-logo-->
+	
+	<!--start-logo-->
+	<!--bottom-header-->
+	<div class="header-bottom">
+		<div class="container">
+			<div class="header">
+				<div class="col-md-9 header-left">
+					<div class="top-nav">
+						<ul class="memenu skyblue">
+							<li class="active"><a href="/" style="color: black;">Home page</a></li>
+							<li class="grid">
+								<!-- <a href="">Products</a> -->
+								<div class="mepanel">
+									<!-- Add content inside the mepanel if needed -->
+								</div>
+							</li>
+						</ul>
+					</div>
+					<div class="clearfix"></div>
+				</div>
+	
+				<div class="col-md-3 header-right">
+					<div class="search-bar">
+						<input type="text" id="search-input" placeholder="Search products...">
+					</div>
+					<br><br><br>
+					<div class="custom-select-container">
+						<select id="sort-select" class="custom-select">
+							<option value="">Filter by:</option>
+                            <option value="desc">New arrivals</option>
+							<option value="asc">By price (low to high)</option>
+							<option value="desc">By price (high to low)</option>
+                            <option value="desc">Rating</option>
+                            <option value="asc">aA - zZ</option>
+                            <option value="desc">zZ - aA</option>
+
+                            
+
+						</select>
+					</div>
+				</div>
+				
+	
+				<div class="clearfix"></div>
+			</div>
+		</div>
+	</div
+	<!-- banner-starts -->
+	<div class="bnr" id="home">
+		<div  id="top" class="callbacks_container">
+			<ul class="rslides" id="slider4">
+			    <li>
+					<img src="images/bnr-1.jpg" alt=""/>
+				</li>
+				<li>
+					<img src="images/bnr-2.jpg" alt=""/>
+				</li>
+				<li>
+					<img src="images/bnr-3.jpg" alt=""/>
+				</li>
+				
+			</ul>
+		</div>
+		<div class="clearfix"> </div>
+	</div>
+	<!--banner-ends--> 
+	<!--Slider-Starts-Here-->
+				<script src="/js/responsiveslides.min.js"></script>
+				<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+			 <script>
+			    // You can also use "$(window).load(function() {"
+			    $(function () {
+			      // Slideshow 4
+			      $("#slider4").responsiveSlides({
+			        auto: true,
+			        pager: true,
+			        nav: true,
+			        speed: 500,
+			        namespace: "callbacks",
+			        before: function () {
+			          $('.events').append("<li>before event fired.</li>");
+			        },
+			        after: function () {
+			          $('.events').append("<li>after event fired.</li>");
+			        }
+			      });
+			
+			    });
+			  </script>
+			<!--End-slider-script-->
+	<!--about-starts-->
+	
+
+	<!--about-end-->
+	<!--product-starts-->
+	
+	<div class="logo">
+		<a href=""><h1 style="font-family: Georgia; color: black;">Products</h1></a>
+	</div>
+	
+	<div class="product">
+		<div class="container">
+			<div class="product-top">
+				<div class="row">
+					<% products.slice().reverse().forEach((row, index) => { %>
+						<div class="col-md-3 product-left" style="margin-bottom: 20px;">
+							<div class="product-main simpleCart_shelfItem">
+								<a href="/productdetails/<%= row._id %>" class="mask">
+									<img class="img-responsive zoom-img" src="/productImages/<%= row.image.length > 0 ? row.image[0] : 'default-image.jpg' %>" alt="<%= row.image %>" />
+								</a>
+								<div class="">
+									<h3><%= row.name %></h3>
+									<h5><%=row.category%></h5>
+									<p>Explore Now</p>
+									<%if(row.OfferPrice){%>
+										<h4><span class="item_price">&#8377;<s><%= row.price %></s></span><span>  &#8377;<%= row.OfferPrice %></span></h4>
+										<!-- <h4><span class="item_price">&#8377;</span></h4> -->
+									<% }else{ %>
+										<h4><span class="item_price">&#8377;<%= row.price %></span></h4>
+										<% } %>	
+									<h4>
+										
+										<a class="btn btn-secondary" href="/productdetails/<%= row._id %>">View Details</a>
+										<a class="btn btn-primary" href="/addtocart/<%=row._id%>" >Add to Cart</a>
+										<!-- The price display -->
+										
+									</h4>
+									
+									
+								</div>
+								<%if(row.Discount>0){%>
+								<div class="srch">
+									<span>-60%</span>
+								</div>
+								<% } %>
+							</div>
+						</div>
+					<% }) %>
+				</div>
+			</div>
+		</div>
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-12 text-center">
+					<% if (currentPage > 1) { %>
+						<a href="?page=<%= currentPage - 1 %>" class="btn btn-primary">Previous</a>
+					<% } %>
+				
+					<!-- You might need to calculate if there are more products -->
+					<a href="?page=<%= currentPage + 1 %>" class="btn btn-primary">Next</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	
+
+	<!--information-starts-->
+	<div class="information">
+		<div class="container">
+			<div class="infor-top">
+				<div class="col-md-3 infor-left">
+					<h3>Follow Us</h3>
+					<ul>
+						<li><a href="#"><span class="fb"></span><h6>Facebook</h6></a></li>
+						<li><a href="#"><span class="twit"></span><h6>Twitter</h6></a></li>
+						<li><a href="#"><span class="google"></span><h6>Google+</h6></a></li>
+					</ul>
+				</div>
+				<div class="col-md-3 infor-left">
+					<h3>Information</h3>
+					<ul>
+						<li><a href="#"><p>Specials</p></a></li>
+						<li><a href="#"><p>New Products</p></a></li>
+						<li><a href="#"><p>Our Stores</p></a></li>
+						<li><a href=""><p>Contact Us</p></a></li>
+						<li><a href=""><p>Top Sellers</p></a></li>
+					</ul>
+				</div>
+				<div class="col-md-3 infor-left">
+					<h3>My Account</h3>
+					<ul>
+						<li><a href="user/profile"><p>My Account</p></a></li>
+						<li><a href="user/profile"><p>My orders</p></a></li>
+						<li><a href="user/profile"><p>My Wallet</p></a></li>
+						<li><a href="user/profile"><p>My Personal info</p></a></li>
+						<li><a href="user/profile"><p>My Addresses</p></a></li>
+					</ul>
+				</div>
+				<div class="col-md-3 infor-left">
+					<h3>Store Information</h3>
+					<h4>The company name,
+						<span>WatchBox,</span>
+						Trivandrum.</h4>
+					<h5>+91 99999999</h5>	
+					<p><a href="">WatchBox@gmail.com</a></p>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+	</div>
+	<!--information-end-->
+	<!--footer-starts-->
+	<div class="footer">
+		<div class="container">
+			<div class="footer-top">
+				<div class="col-md-6 footer-left">
+					
+				</div>
+				<div class="col-md-6 footer-right">					
+					<p>© 2023 WatchBox. All Rights Reserved | Design by  <a href="" target="_blank">WB</a> </p>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+	</div>
+<!-- search-------------------------------------------------------------------- -->
+	<script>
+		document.getElementById('search-input').addEventListener('input', function (event) {
+   const searchTerm = event.target.value.toLowerCase();
+   const productElements = document.querySelectorAll('.product-left');
+   productElements.forEach(function (product) {
+       const productName = product.querySelector('h3').textContent.toLowerCase();
+       if (productName.includes(searchTerm)) {
+           product.style.display = 'block';
+       } else {
+           product.style.display = 'none';
+       }
+   });
+});
+
+const debounce = (func, wait) => {
+   let timeout;
+   return function executedFunction(...args) {
+       const later = () => {
+           clearTimeout(timeout);
+           func(...args);
+       };
+       clearTimeout(timeout);
+       timeout = setTimeout(later, wait);
+   };
+};
+
+const debouncedSearch = debounce(function (event) {
+   const searchTerm = event.target.value.toLowerCase();
+   const productElements = document.querySelectorAll('.product-left');
+   productElements.forEach(function (product) {
+       const productName = product.querySelector('h3').textContent.toLowerCase();
+       if (productName.includes(searchTerm)) {
+           product.style.display = 'block';
+       } else {
+           product.style.display = 'none';
+       }
+   });
+}, 300);
+
+document.getElementById('search-input').addEventListener('input', debouncedSearch);
+
+	</script>
+
+	<!-- sort-------------------------------------- -->
+	<script>
+		document.getElementById('sort-select').addEventListener('change', function (event) {
+  const sortOrder = event.target.value;
+  const productElements = Array.from(document.querySelectorAll('.product-left'));
+  productElements.sort(function (a, b) {
+      const priceA = parseFloat(a.querySelector('.item_price').textContent.replace('₹', ''));
+      const priceB = parseFloat(b.querySelector('.item_price').textContent.replace('₹', ''));
+      if (sortOrder === 'asc') {
+          return priceA - priceB;
+      } else {
+          return priceB - priceA;
+      }
+  });
+  productElements.forEach(function (product) {
+      product.parentNode.appendChild(product);
+  });
+});
+	</script>
+	<!-- filter------------------------------- -->
+	<script>
+		window.onload = function() {
+   document.getElementById('category-select').addEventListener('change', function (event) {
+       const category = event.target.value;
+       const productElements = document.querySelectorAll('.product-left');
+       productElements.forEach(function (product) {
+           const productCategory = product.querySelector('h5').textContent.toLowerCase();
+           if (category === 'all' || productCategory === category) {
+               product.style.display = 'block';
+           } else {
+               product.style.display = 'none';
+           }
+       });
+   });
+};
+
+
+	</script>
+	
+</body>
+</html>

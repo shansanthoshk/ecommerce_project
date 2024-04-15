@@ -5,6 +5,7 @@ const isBlock= require('../middleware/isBlock');
 // const session = require('express-session')
 
 const userController = require('../controller/userController')
+const addressController = require('../controller/addressController')
 const userAuth = require('../middleware/userAuth');
 // const {isBlock} = require('../middleware/isBlock');
 
@@ -53,6 +54,9 @@ user_Route.post('/login', userController.loginPost);
 user_Route.get('/productdetails/:id',userAuth.isLogin,userController.productdetails)
 
 
+user_Route.get('/product',userController.productDisplay)
+
+
 
 
 // ______________ CART route ______________
@@ -68,6 +72,12 @@ user_Route.get('/cart_add/:id', userController.cart_add);
 //_____________ CHECKOUT ROUTE _____________
 
 user_Route.get('/checkoutPage',userController.checkoutGet);
+
+
+//_____________ ADDRESS ROUTE _____________
+
+
+user_Route.post('/addAddress',addressController.addAddress);
 
 
 

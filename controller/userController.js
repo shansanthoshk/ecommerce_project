@@ -1,7 +1,7 @@
 const userCollection=require('../models/userSchema')
 const productCollection = require('../models/productSchema');
 const Cart = require('../models/cartSchema');
-
+const addressCollections=require('../models/addressSchema')
 const generateOtp=require('otp-generator')
 const otpSchema=require('../models/otp')
 const nodemailer = require("nodemailer");
@@ -393,6 +393,33 @@ const getOtp = async (req, res) => {
         console.log("err",err)
     }
   }
+  const PAGE_SIZE = 4;
+  const productDisplay= async (req,res)=>{
+
+    try{
+        const currentPage = parseInt(req.query.page) || 1;
+            const skip = (currentPage - 1) * PAGE_SIZE;
+
+            const products = await productCollection
+                .find()
+                .skip(skip)
+                .limit(PAGE_SIZE)
+                .exec(); 
+
+            const users = await userCollection.findOne({ email: req.session.user });
+
+            res.render('product', { products, users, currentPage });
+    }catch(err){
+        console.log("Error",err);
+    }
+  }
+
+
+
+
+
+
+
 //   ___________________________CART  CONTROLLER_________________________________
   const cartGet = async (req,res)=>{
     console.log("cart get req got");
@@ -617,14 +644,19 @@ const getOtp = async (req, res) => {
             const userData = req.session.userData;
             if(!userData)redirect('/');
             let userCart = await Cart.findOne({ userId: userData._id }).populate('items.product');
-            console.log(userCart);
+            const Address = await addressCollections.find({ userId: userData._id });
+            const userAddress = Address.map(address => address);
     
-            res.render('cartPage',{userCart})
+            res.render('checkout',{userCart,userAddress})
         }catch(err){
             console.log(err);
             res.status(500).send('Internal Server Error');
         }
     }
+
+    
+
+    
   
 
 module.exports={
@@ -642,6 +674,7 @@ module.exports={
     logout,
     productdetails,
     verifyEmail,
+    productDisplay,
     cartGet,
     addToCart,
     productDeleteFromTheCart,

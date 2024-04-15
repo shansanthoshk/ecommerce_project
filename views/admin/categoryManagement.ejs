@@ -194,13 +194,13 @@
                                
      <% if (cat.isDeleted) { %>
         <form method="POST" action="/category/unblock/<%= cat._id %>">
-            <button type="submit" class="btn btn-success">Unblock</button>
+            <button type="submit" class="btn btn-success">Unlist</button>
             </form>
                  <% } else { %>
                     
                     
                         <form method="POST" action="/category/block/<%= cat._id %>">
-                            <button type="submit" class="btn btn-danger">Block</button>
+                            <button type="submit" class="btn btn-danger">List</button>
                              </form>
                       <% } %>
     
